@@ -1,0 +1,36 @@
+# Node.js
+node_modules/
+.env
+.env.*
+
+# Vite/React build çıktısı
+dist/
+
+# Log dosyaları
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+
+# Vercel
+.vercel/
+
+# IDE/editor ayarları
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# MacOS
+*.DS_Store
+
+# Test/coverage
+coverage/
+
+# Diğer
+*.local
