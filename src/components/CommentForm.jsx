@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+const API_URL = 'https://api.melihcanaz.com';
+
 export default function CommentForm({ postId, token, onCommentSuccess }) {
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(false);
@@ -12,7 +14,7 @@ export default function CommentForm({ postId, token, onCommentSuccess }) {
     setSuccess('');
     setLoading(true);
     try {
-      const res = await fetch('http://213.142.151.189:3000/api/comments', {
+      const res = await fetch(`${API_URL}/api/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

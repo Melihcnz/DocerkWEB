@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 
+const API_URL = 'https://api.melihcanaz.com';
+
 function getUserDisplayName(user, username, user_id) {
   return user?.email || username || (user_id ? `Kullanıcı #${user_id}` : 'Bilinmeyen');
 }
@@ -30,7 +32,7 @@ export default function PostList({ token, refresh }) {
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://213.142.151.189:3000/api/posts', {
+    fetch(`${API_URL}/api/posts`, {
       headers: token ? { 'Authorization': `Bearer ${token}` } : {},
     })
       .then(res => res.json())
@@ -50,7 +52,7 @@ export default function PostList({ token, refresh }) {
   const handleDelete = async (id) => {
     setDeleteLoading(id);
     try {
-      await fetch(`http://213.142.151.189:3000/api/posts/${id}`, {
+      await fetch(`${API_URL}/api/posts/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` },
       });
@@ -68,7 +70,7 @@ export default function PostList({ token, refresh }) {
 
   const handleEditSave = async (id) => {
     setEditLoading(true);
-    await fetch(`http://213.142.151.189:3000/api/posts/${id}`, {
+    await fetch(`${API_URL}/api/posts/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

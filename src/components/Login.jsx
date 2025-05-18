@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+const API_URL = 'https://api.melihcanaz.com';
+
 export default function Login({ onLogin, children }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +15,7 @@ export default function Login({ onLogin, children }) {
     setError('');
     setSuccess('');
     try {
-      const res = await fetch('http://213.142.151.189:3000/api/auth/login', {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })

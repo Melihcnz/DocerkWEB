@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+const API_URL = 'https://api.melihcanaz.com';
+
 function getUserDisplayName(user, username, user_id) {
   return user?.email || username || (user_id ? `Kullanıcı #${user_id}` : 'Bilinmeyen');
 }
@@ -11,7 +13,7 @@ export default function CommentList({ postId }) {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://213.142.151.189:3000/api/comments/post/${postId}`)
+    fetch(`${API_URL}/api/comments/post/${postId}`)
       .then(res => res.json())
       .then(data => {
         console.log('Comment API yanıtı:', data);

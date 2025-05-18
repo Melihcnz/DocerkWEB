@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+const API_URL = 'https://api.melihcanaz.com';
+
 export default function PostForm({ token, onPostSuccess }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -13,7 +15,7 @@ export default function PostForm({ token, onPostSuccess }) {
     setSuccess('');
     setLoading(true);
     try {
-      const res = await fetch('http://213.142.151.189:3000/api/posts', {
+      const res = await fetch(`${API_URL}/api/posts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

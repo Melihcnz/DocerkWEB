@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+const API_URL = 'https://api.melihcanaz.com';
+
 export default function Profile({ token }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -8,7 +10,7 @@ export default function Profile({ token }) {
   useEffect(() => {
     if (!token) return;
     setLoading(true);
-    fetch('http://213.142.151.189:3000/api/auth/me', {
+    fetch(`${API_URL}/api/auth/me`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },

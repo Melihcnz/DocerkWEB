@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+const API_URL = 'https://api.melihcanaz.com';
+
 export default function Register({ onRegister, children }) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -23,7 +25,7 @@ export default function Register({ onRegister, children }) {
     }
     setLoading(true);
     try {
-      const res = await fetch('http://213.142.151.189:3000/api/auth/register', {
+      const res = await fetch(`${API_URL}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password })
